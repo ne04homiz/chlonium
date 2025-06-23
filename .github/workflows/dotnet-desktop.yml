@@ -1,0 +1,29 @@
+name: Build Chlonium
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Restore NuGet packages
+        run: nuget restore Chlonium.sln
+
+      - name: Build solution
+        run: msbuild Chlonium.sln /p:Configuration=Release
+
+      - name: Upload EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: Chlonium-executable
+          path: ./Chlonium/bin/Release/Chlonium.exe
