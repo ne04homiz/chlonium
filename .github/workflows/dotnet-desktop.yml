@@ -15,7 +15,7 @@ jobs:
 
       - name: Install .NET Framework 4.5.1 Developer Pack
         run: |
-          Invoke-WebRequest -Uri "https://download.microsoft.com/download/1/6/7/167f0d79-9317-48ae-aedb-17120579f8e2/NDP451-KB2858728-x86-x64-AllOS-ENU.exe" -OutFile "ndp451.exe"
+          Invoke-WebRequest -Uri "https://download.microsoft.com/download/9/6/0/96075294-6820-4f01-924a-474e0023e407/NDP451-KB2861696-x86-x64-DevPack.exe" -OutFile "ndp451.exe"
           Start-Process .\ndp451.exe -ArgumentList "/quiet", "/norestart" -Wait
 
       - name: Setup MSBuild
